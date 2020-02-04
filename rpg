@@ -8,8 +8,8 @@ pygame.mixer.init()
 
 class Launcher(object):
 
-    window = pygame.display.set_mode((900, 800))
-    font = pygame.font.Font("data/font/rpgfont.ttf", 12)
+    window = pygame.display.set_mode((1240, 800))
+    font = pygame.font.Font("data/font/rpgfont.ttf", 60)
 
     def __init__(self):
         pygame.display.set_caption("The Legend of Paradou")
@@ -21,9 +21,22 @@ class Launcher(object):
         while True:
             self.window.fill((0, 0, 0))
             clock.tick(60)
+            self.display()
             for event in pygame.event.get():
                 if event.type == QUIT:
                     exit(0)
             pygame.display.flip()
+
+    def display(self):
+        img = pygame.image.load("data/img/menu.jpg")
+        new_text = self.font.render("New", 1, (255, 255, 255))
+        load_text = self.font.render("Load", 1, (255, 255, 255))
+        quit_text = self.font.render("Quit", 1, (255, 255, 255))
+
+        self.window.blit(img, (0, 0))
+        self.window.blit(new_text, (610, 300))
+        self.window.blit(load_text, (610, 400))
+        self.window.blit(quit_text, (610, 500))
+
 
 Launcher().intro()
