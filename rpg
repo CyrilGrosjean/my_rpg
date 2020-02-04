@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 
 import pygame
+from pygame.locals import *
+
+pygame.init()
+pygame.mixer.init()
 
 class Launcher(object):
 
@@ -9,11 +13,17 @@ class Launcher(object):
 
     def __init__(self):
         pygame.display.set_caption("The Legend of Paradou")
+        pygame.mixer.music.load("data/music/Theme2.ogg")
+        pygame.mixer.music.play(loops=-1)
 
     def intro(self):
-        pass
-
-pygame.init()
-pygame.mixer.init()
+        clock = pygame.time.Clock()
+        while True:
+            self.window.fill((0, 0, 0))
+            clock.tick(60)
+            for event in pygame.event.get():
+                if event.type == QUIT:
+                    exit(0)
+            pygame.display.flip()
 
 Launcher().intro()
