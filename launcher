@@ -1,0 +1,63 @@
+#!/usr/bin/env python3
+
+import pygame
+from pygame.locals import *
+import play
+
+pygame.init()
+pygame.mixer.init()
+
+class Launcher(object):
+
+    window = pygame.display.set_mode((1240, 800))
+    font = pygame.font.Font("data/font/rpgfont.ttf", 60)
+    page = 0
+    mouse = (0, 0)
+
+    def __init__(self):
+        pygame.display.set_caption("The Legend of Paradou")
+        pygame.mixer.music.load("data/music/Theme2.ogg")
+        pygame.mixer.music.play(loops=-1)
+
+    def intro(self):
+        clock = pygame.time.Clock()
+        while True:
+            self.window.fill((0, 0, 0))
+            clock.tick(60)
+            self.display()
+            self.event()
+            pygame.display.flip()
+
+    def event(self):
+        for event in pygame.event.get():
+            self.mouse = pygame.mouse.get_pos()
+            if event.type == MOUSEBUTTONDOWN:
+                if self.mouse[0] >= 610 and self.mouse[0] <= 700 and self.mouse[1] >= 315 and self.mouse[1] <= 345:
+                    play.start()
+                if self.mouse[0] >= 610 and self.mouse[0] <= 705 and self.mouse[1] >= 410 and self.mouse[1] <= 445:
+                    print("Load")
+                if self.mouse[0] >= 610 and self.mouse[0] <= 690 and self.mouse[1] >= 515 and self.mouse[1] <= 545:
+                    exit(0)
+            if event.type == QUIT:
+                exit(0)
+
+    def display(self):
+        if self.page == 0:
+            img = pygame.image.load("data/img/menu.jpg")
+            new_text = self.font.render("New", 1, (255, 255, 255))
+            load_text = self.font.render("Load", 1, (255, 255, 255))
+            quit_text = self.font.render("Quit", 1, (255, 255, 255))
+            if self.mouse[0] >= 610 and self.mouse[0] <= 700 and self.mouse[1] >= 315 and self.mouse[1] <= 345:
+                new_text = self.font.render("New", 1, (255, 0, 0))
+            if self.mouse[0] >= 610 and self.mouse[0] <= 705 and self.mouse[1] >= 410 and self.mouse[1] <= 445:
+                load_text = self.font.render("Load", 1, (255, 0, 0))
+            if self.mouse[0] >= 610 and self.mouse[0] <= 690 and self.mouse[1] >= 515 and self.mouse[1] <= 545:
+                quit_text = self.font.render("Quit", 1, (255, 0, 0))
+
+            self.window.blit(img, (0, 0))
+            self.window.blit(new_text, (610, 300))
+            self.window.blit(load_text, (610, 400))
+            self.window.blit(quit_text, (610, 500))
+
+
+Launcher().intro()
