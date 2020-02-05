@@ -18,3 +18,29 @@ def event_main_menu(event, self):
             exit(0)
     if event.type == QUIT:
         exit(0)
+
+def event_options(event, self):
+    if event.type == QUIT:
+        exit(0)
+
+def event_game(event, self):
+    if event.type == KEYDOWN:
+        if event.key == self.option.get_key("Up"):
+            self.move_keys[0] = True
+        if event.key == self.option.get_key("Down"):
+            self.move_keys[1] = True
+        if event.key == self.option.get_key("Left"):
+            self.move_keys[2] = True
+        if event.key == self.option.get_key("Right"):
+            self.move_keys[3] = True
+    if event.type == KEYUP:
+        if event.key == self.option.get_key("Up"):
+            self.move_keys[0] = False
+        if event.key == self.option.get_key("Down"):
+            self.move_keys[1] = False
+        if event.key == self.option.get_key("Left"):
+            self.move_keys[2] = False
+        if event.key == self.option.get_key("Right"):
+            self.move_keys[3] = False
+    if event.type == QUIT:
+        exit(0)

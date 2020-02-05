@@ -9,8 +9,6 @@ import pygame
 from pygame.locals import *
 
 def display_main_menu(self):
-    img = pygame.image.load("data/img/menu.jpg")
-    logo = pygame.image.load("data/img/logo.png")
     new_text = self.font.render("New", 1, (255, 255, 255))
     load_text = self.font.render("Load", 1, (255, 255, 255))
     quit_text = self.font.render("Quit", 1, (255, 255, 255))
@@ -21,18 +19,30 @@ def display_main_menu(self):
         load_text = self.font.render("Load", 1, (255, 0, 0))
     if self.mouse[0] >= 610 and self.mouse[0] <= 690 and self.mouse[1] >= 515 and self.mouse[1] <= 545:
         quit_text = self.font.render("Quit", 1, (255, 0, 0))
-    self.window.blit(img, (0, 0))
-    self.window.blit(logo, (450, 0))
+    self.window.blit(self.images.get("main_menu"), (0, 0))
+    self.window.blit(self.images.get("logo"), (450, 0))
     self.window.blit(new_text, (610, 300))
     self.window.blit(load_text, (610, 400))
     self.window.blit(quit_text, (610, 500))
 
 def display_options(self):
-    img = pygame.image.load("data/img/menu.jpg")
     logo = pygame.image.load("data/img/logo.png")
 
-    self.window.blit(img, (0, 0))
-    self.window.blit(logo, (450, 0))
+    self.window.blit(self.images.get("main_menu"), (0, 0))
+    self.window.blit(self.images.get("logo"), (450, 0))
 
 def display_map(self):
-    img = pygame.image.load("data/maps/map1.png", )
+    pos = self.p.get_positions()
+
+    if self.move_keys[0]:
+        pos[1] -= 5
+    if self.move_keys[1]:
+        pos[1] += 5
+    if self.move_keys[2]:
+        pos[0] -= 5
+    if self.move_keys[3]:
+        pos[0] += 5
+
+    self.p.change_positions(pos[0], pos[1])
+    self.window.blit(self.images.get("map1"), (0 - pos[0], 0 - pos[1]))
+    self.window.blit(self.sprite, (620, 400))

@@ -12,6 +12,7 @@ from pygame.locals import *
 import player
 import event as Ev
 import display as Disp
+import options
 
 pygame.init()
 pygame.mixer.init()
@@ -24,6 +25,10 @@ class Launcher(object):
     fen = 0
     mouse = (0, 0)
     p = player.Player()
+    option = options.Options()
+    images = {"main_menu": pygame.image.load("data/img/menu.jpg"), "logo": pygame.image.load("data/img/logo.png"), "map1": pygame.image.load("data/maps/map1.png")}
+    move_keys = [False, False, False, False]
+    sprite = pygame.image.load("data/sprite/down2.png")
 
     def __init__(self):
         pygame.display.set_caption("The Legend of Paradou")
@@ -44,8 +49,10 @@ class Launcher(object):
     def event(self):
         for event in pygame.event.get():
             self.mouse = pygame.mouse.get_pos()
-            if self.fen == 0:
+            if self.fen == 0 and self.page == 0:
                 Ev.event_main_menu(event, self)
+            if self.fen == 1:
+                Ev.event_game(event, self)
 
     def display(self):
         if self.fen == 0:
@@ -53,5 +60,8 @@ class Launcher(object):
                 Disp.display_main_menu(self)
             elif self.page == 1:
                 Disp.display_options(self)
+        if self.fen == 1:
+            if self.page == 0:
+                Disp.display_map(self)
 
 Launcher().refresh()
