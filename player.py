@@ -52,3 +52,6 @@ class Player():
 
     def change_money(self, nb):
         self.money = nb
+
+    def get_animation(self, rotation):
+        return self.player_animation.get(rotation)

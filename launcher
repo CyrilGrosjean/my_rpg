@@ -28,7 +28,8 @@ class Launcher(object):
     option = options.Options()
     images = {"main_menu": pygame.image.load("data/img/menu.jpg"), "logo": pygame.image.load("data/img/logo.png"), "map1": pygame.image.load("data/maps/map1.png")}
     move_keys = [False, False, False, False]
-    sprite = pygame.image.load("data/sprite/down2.png")
+    refresh_time = 0
+    index_animation = 0
 
     def __init__(self):
         pygame.display.set_caption("The Legend of Paradou")
@@ -42,6 +43,9 @@ class Launcher(object):
         while True:
             self.window.fill((0, 0, 0))
             clock.tick(60)
+            self.refresh_time += 1
+            if self.refresh_time > 60:
+                self.refresh_time = 0
             self.display()
             self.event()
             pygame.display.flip()

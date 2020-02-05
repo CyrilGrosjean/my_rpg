@@ -33,16 +33,28 @@ def display_options(self):
 
 def display_map(self):
     pos = self.p.get_positions()
+    sprite = self.p.get_animation("Down")
 
     if self.move_keys[0]:
-        pos[1] -= 5
+        pos[1] -= 3
+        sprite = self.p.get_animation("Up")
     if self.move_keys[1]:
-        pos[1] += 5
+        pos[1] += 3
+        sprite = self.p.get_animation("Down")
     if self.move_keys[2]:
-        pos[0] -= 5
+        pos[0] -= 3
+        sprite = self.p.get_animation("Left")
     if self.move_keys[3]:
-        pos[0] += 5
+        pos[0] += 3
+        sprite = self.p.get_animation("Right")
+    if True in self.move_keys:
+        if self.refresh_time % 10 == 0:
+            self.index_animation += 1
+            if self.index_animation == 3:
+                self.index_animation = 0
+    else:
+        self.index_animation = 1
 
     self.p.change_positions(pos[0], pos[1])
     self.window.blit(self.images.get("map1"), (0 - pos[0], 0 - pos[1]))
-    self.window.blit(self.sprite, (620, 400))
+    self.window.blit(sprite[self.index_animation], (620, 400))
