@@ -11,7 +11,7 @@ from math import floor
 
 def check_map_other_number(self, x, y, map_block):
     X = x + 620 + 25
-    Y = y = 400 + 50
+    Y = y + 400 + 50
     X = floor(X / 48)
     Y = floor(Y / 48)
     map_block_new = self.map_collisions[Y][X]
@@ -39,5 +39,16 @@ def check_collision(self, pos):
         if self.move_keys[3]:
             pos[0] -= 3
     else:
-        pass
+        if self.move_keys[0]:
+            if not (check_map_other_number(self, pos[0], pos[1] + 3, map_block)):
+                pos[1] += 3
+        if self.move_keys[1]:
+            if not (check_map_other_number(self, pos[0], pos[1] - 3, map_block)):
+                pos[1] -= 3
+        if self.move_keys[2]:
+            if not (check_map_other_number(self, pos[0] + 3, pos[1], map_block)):
+                pos[0] += 3
+        if self.move_keys[3]:
+            if not (check_map_other_number(self, pos[0] - 3, pos[1], map_block)):
+                pos[0] -= 3
     return pos
