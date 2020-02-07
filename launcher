@@ -35,7 +35,7 @@ class Launcher(object):
     option = options.Options()
     map_collisions = map.get_map("map1")
     move_keys = [False, False, False, False]
-    keys = {"Escape": False}
+    keys = {"Escape": False, "Inventory": False}
     refresh_time = 0
     index_animation = 0
 
@@ -68,6 +68,8 @@ class Launcher(object):
                 Ev.event_game(event, self)
             if self.fen == 1 and self.page == 1:
                 Ev.event_menu(event, self)
+            if self.fen == 1 and self.page == 2:
+                Ev.event_inventory(event, self)
 
     def display(self):
         if self.fen == 0:
@@ -80,5 +82,7 @@ class Launcher(object):
                 Disp.display_map(self)
             if self.page == 1:
                 Disp.display_menu(self)
+            if self.page == 2:
+                Disp.display_inventory(self)
 
 Launcher().refresh()

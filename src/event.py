@@ -49,6 +49,10 @@ def event_game(event, self):
                         self.images["menu_in_game"].get(i).set_alpha(0)
                 self.keys["Escape"] = True
                 self.page = 1
+        if event.key == self.option.get_key("Inventory"):
+            if not self.keys.get("Inventory"):
+                self.keys["Inventory"] = True
+                self.page = 2
     if event.type == KEYUP:
         if event.key == self.option.get_key("Up"):
             self.move_keys[0] = False
@@ -60,6 +64,8 @@ def event_game(event, self):
             self.move_keys[3] = False
         if event.key == self.option.get_key("Menu"):
             self.keys["Escape"] = False
+        if event.key == self.option.get_key("Inventory"):
+            self.keys["Inventory"] = False
     if event.type == QUIT:
         exit(0)
 
@@ -69,7 +75,7 @@ def event_menu(event, self):
     if event.type == MOUSEBUTTONDOWN:
         mouse = pygame.mouse.get_pos()
         if mouse[0] >= 590 and mouse[0] <= 620 and mouse[1] >= 360 and mouse[1] <= 390:
-            print("Inventory")
+            self.page = 2
         if mouse[0] >= 670 and mouse[0] <= 700 and mouse[1] >= 365 and mouse[1] <= 390:
             print("Equip")
         if mouse[0] >= 560 and mouse[0] <= 590 and mouse[1] >= 435 and mouse[1] <= 460:
@@ -77,7 +83,8 @@ def event_menu(event, self):
         if mouse[0] >= 690 and mouse[0] <= 720 and mouse[1] >= 435 and mouse[1] <= 460:
             print("Quests")
         if mouse[0] >= 630 and mouse[0] <= 660 and mouse[1] >= 480 and mouse[1] <= 510:
-            exit(0)
+            self.fen = 0
+            self.page = 0
     if event.type == KEYUP:
         if event.key == self.option.get_key("Menu"):
             self.keys["Escape"] = False
@@ -87,3 +94,20 @@ def event_menu(event, self):
                 self.page = 0
                 self.move_keys = [False, False, False, False]
                 self.keys["Escape"] = True
+
+def event_inventory(event, self):
+    if event.type == QUIT:
+        exit(0)
+    if event.type == KEYUP:
+        if event.key == self.option.get_key("Inventory"):
+            self.keys["Inventory"] = False
+    if event.type == KEYDOWN:
+        if event.key == self.option.get_key("Inventory"):
+            if not self.keys.get("Inventory"):
+                self.page = 0
+                self.move_keys = [False, False, False, False]
+                self.keys["Inventory"] = True
+        if event.key == self.option.get_key("Menu"):
+            self.keys["Escape"] = True
+            self.page = 0
+            self.move_keys = [False, False, False, False]

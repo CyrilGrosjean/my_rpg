@@ -50,6 +50,15 @@ def display_menu(self):
     self.window.blit(img.get("quit"), (630, 480))
     animations.display_text_menu(self)
 
+def display_inventory(self):
+    pos = self.p.get_positions()
+    sprite = self.p.get_animation("Down")
+    img = self.images.get("inventory")
+
+    self.window.blit(img.get("map"), (0 - pos[0], 0 - pos[1]))
+    self.window.blit(sprite[1], (620, 400))
+    self.window.blit(img.get("inventory"), (399, 301))
+
 def display_map(self):
     pos = self.p.get_positions()
     sprite = self.p.get_animation("Down")
