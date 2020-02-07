@@ -18,6 +18,7 @@ import event as Ev
 import display as Disp
 import options
 import map
+import images_load
 
 pygame.init()
 pygame.mixer.init()
@@ -26,19 +27,20 @@ class Launcher(object):
 
     window = pygame.display.set_mode((1240, 800))
     font = pygame.font.Font("data/font/rpgfont.ttf", 60)
+    small_font = pygame.font.Font("data/font/rpgfont.ttf", 20)
     page = 0
     fen = 0
     mouse = (0, 0)
     p = player.Player()
     option = options.Options()
     map_collisions = map.get_map("map1")
-    images = {"main_menu": pygame.image.load("data/img/menu.jpg").convert_alpha(), "logo": pygame.image.load("data/img/logo.png").convert_alpha(), "map1": pygame.image.load("data/maps/map1.png").convert_alpha(), "alt_menu": pygame.image.load("data/img/black_screen.png").convert_alpha()}
     move_keys = [False, False, False, False]
     keys = {"Escape": False}
     refresh_time = 0
     index_animation = 0
 
     def __init__(self):
+        self.images = images_load.get_image(self)
         pygame.display.set_caption("The Legend of Paradou")
         pygame.mixer.music.load("data/music/Theme2.ogg")
         pygame.mixer.music.play(loops=-1)

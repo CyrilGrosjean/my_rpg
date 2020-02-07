@@ -42,6 +42,11 @@ def event_game(event, self):
             self.move_keys[3] = True
         if event.key == self.option.get_key("Menu"):
             if not self.keys.get("Escape"):
+                img = self.images.get("menu_in_game")
+                self.size = 4
+                for i in img.keys():
+                    if i != "map" and i != "alt_menu":
+                        self.images["menu_in_game"].get(i).set_alpha(0)
                 self.keys["Escape"] = True
                 self.page = 1
     if event.type == KEYUP:
@@ -61,6 +66,18 @@ def event_game(event, self):
 def event_menu(event, self):
     if event.type == QUIT:
         exit(0)
+    if event.type == MOUSEBUTTONDOWN:
+        mouse = pygame.mouse.get_pos()
+        if mouse[0] >= 590 and mouse[0] <= 620 and mouse[1] >= 360 and mouse[1] <= 390:
+            print("Inventory")
+        if mouse[0] >= 670 and mouse[0] <= 700 and mouse[1] >= 365 and mouse[1] <= 390:
+            print("Equip")
+        if mouse[0] >= 560 and mouse[0] <= 590 and mouse[1] >= 435 and mouse[1] <= 460:
+            print("Save")
+        if mouse[0] >= 690 and mouse[0] <= 720 and mouse[1] >= 435 and mouse[1] <= 460:
+            print("Quests")
+        if mouse[0] >= 630 and mouse[0] <= 660 and mouse[1] >= 480 and mouse[1] <= 510:
+            exit(0)
     if event.type == KEYUP:
         if event.key == self.option.get_key("Menu"):
             self.keys["Escape"] = False
@@ -68,4 +85,5 @@ def event_menu(event, self):
         if event.key == self.option.get_key("Menu"):
             if not self.keys.get("Escape"):
                 self.page = 0
+                self.move_keys = [False, False, False, False]
                 self.keys["Escape"] = True
