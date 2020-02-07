@@ -31,24 +31,24 @@ def check_collision(self, pos):
 
     if map_block == 0:
         if self.move_keys[0]:
-            pos[1] += 3
+            pos[1] += 1
         if self.move_keys[1]:
-            pos[1] -= 3
+            pos[1] -= 1
         if self.move_keys[2]:
-            pos[0] += 3
+            pos[0] += 1
         if self.move_keys[3]:
-            pos[0] -= 3
+            pos[0] -= 1
     else:
         if self.move_keys[0]:
-            if not (check_map_other_number(self, pos[0], pos[1] + 3, map_block)):
-                pos[1] += 3
+            if not (check_map_other_number(self, pos[0], pos[1] + 1, map_block)):
+                pos[1] += 1
         if self.move_keys[1]:
-            if not (check_map_other_number(self, pos[0], pos[1] - 3, map_block)):
-                pos[1] -= 3
+            if not (check_map_other_number(self, pos[0], pos[1] - 1, map_block)):
+                pos[1] -= 1
         if self.move_keys[2]:
-            if not (check_map_other_number(self, pos[0] + 3, pos[1], map_block)):
-                pos[0] += 3
+            if not (check_map_other_number(self, pos[0] + 1, pos[1], map_block)):
+                pos[0] += 1
         if self.move_keys[3]:
-            if not (check_map_other_number(self, pos[0] - 3, pos[1], map_block)):
-                pos[0] -= 3
+            if not (check_map_other_number(self, pos[0] - 1, pos[1], map_block)):
+                pos[0] -= 1
     return pos

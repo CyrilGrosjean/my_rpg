@@ -40,6 +40,10 @@ def event_game(event, self):
             self.move_keys[2] = True
         if event.key == self.option.get_key("Right"):
             self.move_keys[3] = True
+        if event.key == self.option.get_key("Menu"):
+            if not self.keys.get("Escape"):
+                self.keys["Escape"] = True
+                self.page = 1
     if event.type == KEYUP:
         if event.key == self.option.get_key("Up"):
             self.move_keys[0] = False
@@ -49,5 +53,19 @@ def event_game(event, self):
             self.move_keys[2] = False
         if event.key == self.option.get_key("Right"):
             self.move_keys[3] = False
+        if event.key == self.option.get_key("Menu"):
+            self.keys["Escape"] = False
     if event.type == QUIT:
         exit(0)
+
+def event_menu(event, self):
+    if event.type == QUIT:
+        exit(0)
+    if event.type == KEYUP:
+        if event.key == self.option.get_key("Menu"):
+            self.keys["Escape"] = False
+    if event.type == KEYDOWN:
+        if event.key == self.option.get_key("Menu"):
+            if not self.keys.get("Escape"):
+                self.page = 0
+                self.keys["Escape"] = True

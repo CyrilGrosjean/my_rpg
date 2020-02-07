@@ -32,21 +32,29 @@ def display_options(self):
     self.window.blit(self.images.get("main_menu"), (0, 0))
     self.window.blit(self.images.get("logo"), (450, 0))
 
+def display_menu(self):
+    pos = self.p.get_positions()
+    sprite = self.p.get_animation("Down")
+
+    self.window.blit(self.images.get("map1"), (0 - pos[0], 0 - pos[1]))
+    self.window.blit(sprite[1], (620, 400))
+    self.window.blit(self.images.get("alt_menu"), (0, 0))
+
 def display_map(self):
     pos = self.p.get_positions()
     sprite = self.p.get_animation("Down")
 
     if self.move_keys[0]:
-        pos[1] -= 3
+        pos[1] -= 1
         sprite = self.p.get_animation("Up")
     if self.move_keys[1]:
-        pos[1] += 3
+        pos[1] += 1
         sprite = self.p.get_animation("Down")
     if self.move_keys[2]:
-        pos[0] -= 3
+        pos[0] -= 1
         sprite = self.p.get_animation("Left")
     if self.move_keys[3]:
-        pos[0] += 3
+        pos[0] += 1
         sprite = self.p.get_animation("Right")
     if True in self.move_keys:
         if self.refresh_time % 10 == 0:
