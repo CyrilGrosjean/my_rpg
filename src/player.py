@@ -10,7 +10,7 @@ from pygame.locals import *
 
 class Player():
 
-    pos = [0, 0]
+    pos = [0, 900]
     money = 100
     player_info = {"Health": 100, "Attack": 10, "Defense": 10, "Speed": 10}
     equipment = {"Weapon": "Sword", "Body": "Chestplate", "Head": "Helmet", "Legs": "Leggings", "Feet": "Boots", "Arm left": "Ring", "Arm right": "Ring"}

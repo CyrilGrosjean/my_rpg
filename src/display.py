@@ -7,6 +7,7 @@
 
 import pygame
 from pygame.locals import *
+import collision
 
 def display_main_menu(self):
     new_text = self.font.render("New", 1, (255, 255, 255))
@@ -55,6 +56,7 @@ def display_map(self):
     else:
         self.index_animation = 1
 
+    pos = collision.check_collision(self, pos)
     self.p.change_positions(pos[0], pos[1])
     self.window.blit(self.images.get("map1"), (0 - pos[0], 0 - pos[1]))
     self.window.blit(sprite[self.index_animation], (620, 400))

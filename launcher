@@ -7,12 +7,17 @@
 ## launcher to load or create a new game
 ##
 
+import sys
 import pygame
 from pygame.locals import *
+
+sys.path.insert(1, "./src/")
+
 import player
 import event as Ev
 import display as Disp
 import options
+import map
 
 pygame.init()
 pygame.mixer.init()
@@ -26,6 +31,7 @@ class Launcher(object):
     mouse = (0, 0)
     p = player.Player()
     option = options.Options()
+    map_collisions = map.get_map("map1")
     images = {"main_menu": pygame.image.load("data/img/menu.jpg"), "logo": pygame.image.load("data/img/logo.png"), "map1": pygame.image.load("data/maps/map1.png")}
     move_keys = [False, False, False, False]
     refresh_time = 0
@@ -41,8 +47,8 @@ class Launcher(object):
         clock = pygame.time.Clock()
 
         while True:
+            clock.tick(120)
             self.window.fill((0, 0, 0))
-            clock.tick(60)
             self.refresh_time += 1
             if self.refresh_time > 60:
                 self.refresh_time = 0
