@@ -9,6 +9,7 @@ import pygame
 from pygame.locals import *
 import collision
 import animations
+from math import floor
 
 def display_main_menu(self):
     new_text = self.font.render("New", 1, (255, 255, 255))
@@ -63,6 +64,8 @@ def display_map(self):
     pos = self.p.get_positions()
     sprite = self.p.get_animation("Down")
     img = self.images.get("in_game")
+    p_health = self.p.get_player_info("Health")
+    max_health = self.p.get_player_info("MaxHealth")
 
     if self.move_keys[0]:
         pos[1] -= 1
@@ -87,4 +90,6 @@ def display_map(self):
     pos = collision.check_collision(self, pos)
     self.p.change_positions(pos[0], pos[1])
     self.window.blit(img.get("map"), (0 - pos[0], 0 - pos[1]))
+    self.window.blit(img.get("empty_bar"), (1110, 760), (0, 0, 100, 25))
+    self.window.blit(img.get("heal_bar"), (1110, 760), (0, 0, floor(p_health / max_health * 100), 25))
     self.window.blit(sprite[self.index_animation], (620, 400))
