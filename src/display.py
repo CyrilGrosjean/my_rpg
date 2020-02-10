@@ -9,6 +9,7 @@ import pygame
 from pygame.locals import *
 import collision
 import animations
+import movement
 from math import floor
 
 def display_main_menu(self):
@@ -67,25 +68,7 @@ def display_map(self):
     p_health = self.p.get_player_info("Health")
     max_health = self.p.get_player_info("MaxHealth")
 
-    if self.move_keys[0]:
-        pos[1] -= 1
-        sprite = self.p.get_animation("Up")
-    if self.move_keys[1]:
-        pos[1] += 1
-        sprite = self.p.get_animation("Down")
-    if self.move_keys[2]:
-        pos[0] -= 1
-        sprite = self.p.get_animation("Left")
-    if self.move_keys[3]:
-        pos[0] += 1
-        sprite = self.p.get_animation("Right")
-    if True in self.move_keys:
-        if self.refresh_time % 10 == 0:
-            self.index_animation += 1
-            if self.index_animation == 3:
-                self.index_animation = 0
-    else:
-        self.index_animation = 1
+    pos, sprite = movement.check_movement(self)
 
     pos = collision.check_collision(self, pos)
     self.p.change_positions(pos[0], pos[1])

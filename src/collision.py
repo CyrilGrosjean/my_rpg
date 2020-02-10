@@ -28,27 +28,55 @@ def check_collision(self, pos):
     x = floor(x / 48)
     y = floor(y / 48)
     map_block = self.map_collisions[y][x]
+    nb = 0
 
+    for i in self.move_keys:
+        if i == True:
+            nb += 1
     if map_block == 0:
         if self.move_keys[0]:
-            pos[1] += 1
+            if nb > 1:
+                pos[1] += 0.75
+            else:
+                pos[1] += 1
         if self.move_keys[1]:
-            pos[1] -= 1
+            if nb > 1:
+                pos[1] -= 0.75
+            else:
+                pos[1] -= 1
         if self.move_keys[2]:
-            pos[0] += 1
+            if nb > 1:
+                pos[0] += 0.75
+            else:
+                pos[0] += 1
         if self.move_keys[3]:
-            pos[0] -= 1
+            if nb > 1:
+                pos[0] -= 0.75
+            else:
+                pos[0] -= 1
     else:
         if self.move_keys[0]:
             if not (check_map_other_number(self, pos[0], pos[1] + 1, map_block)):
-                pos[1] += 1
+                if nb > 1:
+                    pos[1] += 0.75
+                else:
+                    pos[1] += 1
         if self.move_keys[1]:
             if not (check_map_other_number(self, pos[0], pos[1] - 1, map_block)):
-                pos[1] -= 1
+                if nb > 1:
+                    pos[1] -= 0.75
+                else:
+                    pos[1] -= 1
         if self.move_keys[2]:
             if not (check_map_other_number(self, pos[0] + 1, pos[1], map_block)):
-                pos[0] += 1
+                if nb > 1:
+                    pos[0] += 0.75
+                else:
+                    pos[0] += 1
         if self.move_keys[3]:
             if not (check_map_other_number(self, pos[0] - 1, pos[1], map_block)):
-                pos[0] -= 1
+                if nb > 1:
+                    pos[0] -= 0.75
+                else:
+                    pos[0] -= 1
     return pos
