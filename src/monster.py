@@ -11,7 +11,7 @@ from pygame.locals import *
 class Monster():
 
     pos = [0, 900]
-    monster_info = {"MaxHealth": 100, "Health": 100, "Attack": 10, "Defense": 10, "Agility": 10, "Speed": 10}
+    monster_info = {"MaxHealth": 100, "Health": 100, "Attack": 10, "Defense": 10, "Speed": 10}
     monster_loot = {"Gold": 10, "Exp": 10, "Objects": []}
     monster_animation = {"Up": [pygame.image.load("data/sprite/monster/up1.png"), pygame.image.load("data/sprite/monster/up2.png"), pygame.image.load("data/sprite/monster/up3.png")],
     "Down": [pygame.image.load("data/sprite/monster/down1.png"), pygame.image.load("data/sprite/monster/down2.png"), pygame.image.load("data/sprite/monster/down3.png")],

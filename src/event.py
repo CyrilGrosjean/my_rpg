@@ -7,6 +7,7 @@
 
 import pygame
 from pygame.locals import *
+import save
 
 def event_main_menu(event, self):
     if event.type == MOUSEBUTTONDOWN:
@@ -14,7 +15,8 @@ def event_main_menu(event, self):
             self.fen, self.page = 1, 0
             pygame.mixer.music.stop()
         if self.mouse[0] >= 610 and self.mouse[0] <= 705 and self.mouse[1] >= 410 and self.mouse[1] <= 445:
-            self.fen, self.page = 0, 1
+            # self.fen, self.page = 0, 1
+            save.load(self, "file1")
         if self.mouse[0] >= 610 and self.mouse[0] <= 690 and self.mouse[1] >= 515 and self.mouse[1] <= 545:
             exit(0)
     if event.type == KEYDOWN:
@@ -79,7 +81,7 @@ def event_menu(event, self):
         if mouse[0] >= 670 and mouse[0] <= 700 and mouse[1] >= 365 and mouse[1] <= 390:
             print("Equip")
         if mouse[0] >= 560 and mouse[0] <= 590 and mouse[1] >= 435 and mouse[1] <= 460:
-            print("Save")
+            save.save(self, "file1")
         if mouse[0] >= 690 and mouse[0] <= 720 and mouse[1] >= 435 and mouse[1] <= 460:
             print("Quests")
         if mouse[0] >= 630 and mouse[0] <= 660 and mouse[1] >= 480 and mouse[1] <= 510:
