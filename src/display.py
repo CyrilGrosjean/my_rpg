@@ -10,6 +10,7 @@ from pygame.locals import *
 import collision
 import animations
 import movement
+import monster
 from math import floor
 
 def display_main_menu(self):
@@ -67,12 +68,14 @@ def display_map(self):
     img = self.images.get("in_game")
     p_health = self.p.get_player_info("Health")
     max_health = self.p.get_player_info("MaxHealth")
-
     pos, sprite = movement.check_movement(self)
-
     pos = collision.check_collision(self, pos)
+
     self.p.change_positions(pos[0], pos[1])
     self.window.blit(img.get("map"), (0 - pos[0], 0 - pos[1]))
+    for i in self.mobs:
+        anim = i.get_animation("Down")
+        self.window.blit(anim[1], (i.pos[0] - pos[0], i.pos[1] - pos[1]))
     self.window.blit(img.get("empty_bar"), (1110, 760), (0, 0, 100, 25))
     self.window.blit(img.get("heal_bar"), (1110, 760), (0, 0, floor(p_health / max_health * 100), 25))
     self.window.blit(sprite[self.index_animation], (620, 400))

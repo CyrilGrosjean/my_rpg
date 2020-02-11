@@ -19,6 +19,7 @@ import display as Disp
 import options
 import map
 import images_load
+import monster
 
 pygame.init()
 pygame.mixer.init()
@@ -28,6 +29,7 @@ class Launcher(object):
     window = pygame.display.set_mode((1240, 800))
     font = pygame.font.Font("data/font/rpgfont.ttf", 60)
     small_font = pygame.font.Font("data/font/rpgfont.ttf", 20)
+    mobs = [monster.Monster()]
     page = 0
     fen = 0
     mouse = (0, 0)

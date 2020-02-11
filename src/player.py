@@ -14,10 +14,10 @@ class Player():
     money = 100
     player_info = {"MaxHealth": 100, "Health": 100, "Attack": 10, "Defense": 10, "Speed": 10}
     equipment = {"Weapon": "Sword", "Body": "Chestplate", "Head": "Helmet", "Legs": "Leggings", "Feet": "Boots", "Arm left": "Ring", "Arm right": "Ring"}
-    player_animation = {"Up": [pygame.image.load("data/sprite/up1.png"), pygame.image.load("data/sprite/up2.png"), pygame.image.load("data/sprite/up3.png")],
-    "Down": [pygame.image.load("data/sprite/down1.png"), pygame.image.load("data/sprite/down2.png"), pygame.image.load("data/sprite/down3.png")],
-    "Left": [pygame.image.load("data/sprite/left1.png"), pygame.image.load("data/sprite/left2.png"), pygame.image.load("data/sprite/left3.png")],
-    "Right": [pygame.image.load("data/sprite/right1.png"), pygame.image.load("data/sprite/right2.png"), pygame.image.load("data/sprite/right3.png")]}
+    player_animation = {"Up": [pygame.image.load("data/sprite/player/up1.png"), pygame.image.load("data/sprite/player/up2.png"), pygame.image.load("data/sprite/player/up3.png")],
+    "Down": [pygame.image.load("data/sprite/player/down1.png"), pygame.image.load("data/sprite/player/down2.png"), pygame.image.load("data/sprite/player/down3.png")],
+    "Left": [pygame.image.load("data/sprite/player/left1.png"), pygame.image.load("data/sprite/player/left2.png"), pygame.image.load("data/sprite/player/left3.png")],
+    "Right": [pygame.image.load("data/sprite/player/right1.png"), pygame.image.load("data/sprite/player/right2.png"), pygame.image.load("data/sprite/player/right3.png")]}
 
     def __init__(self):
         pass
