@@ -18,7 +18,6 @@ class Player():
     "Down": [pygame.image.load("data/sprite/player/down1.png"), pygame.image.load("data/sprite/player/down2.png"), pygame.image.load("data/sprite/player/down3.png")],
     "Left": [pygame.image.load("data/sprite/player/left1.png"), pygame.image.load("data/sprite/player/left2.png"), pygame.image.load("data/sprite/player/left3.png")],
     "Right": [pygame.image.load("data/sprite/player/right1.png"), pygame.image.load("data/sprite/player/right2.png"), pygame.image.load("data/sprite/player/right3.png")]}
-
     def __init__(self):
         pass
 

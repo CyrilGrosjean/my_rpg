@@ -15,8 +15,9 @@ def event_main_menu(event, self):
             self.fen, self.page = 1, 0
             pygame.mixer.music.stop()
         if self.mouse[0] >= 610 and self.mouse[0] <= 705 and self.mouse[1] >= 410 and self.mouse[1] <= 445:
-            # self.fen, self.page = 0, 1
             save.load(self, "file1")
+            self.fen, self.page = 1, 0
+            # self.fen, self.page = 0, 1
         if self.mouse[0] >= 610 and self.mouse[0] <= 690 and self.mouse[1] >= 515 and self.mouse[1] <= 545:
             exit(0)
     if event.type == KEYDOWN:

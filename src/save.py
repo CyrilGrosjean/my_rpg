@@ -9,17 +9,12 @@ def save(self, filesav):
     path = "data/saves/" + filesav + ".sav"
     file = open(path, "w", encoding='utf-8')
     text = "# SYSTEM\n"
-    text += "fen=" + str(self.fen) + "\n"
-    text += "page=" + str(self.page) + "\n"
     text += "map=map1" + "\n"
     text += "item_count="
     itemlist = []
     for i in self.items:
         itemlist.append(str(i.get_count()))
-    if len(itemlist) == 0:
-        text += "[]\n"
-    else:
-        text += ",".join(itemlist) + "\n"
+    text += ",".join(itemlist) + "\n"
     del itemlist
     text += "# PLAYER\n"
     pos = self.p.get_positions()
@@ -61,4 +56,31 @@ def load(self, filesav):
         else:
             double_data[index].append(i)
     del lines_data
-    print(double_data)
+
+    # DEFINE LOAD VARIABLES
+
+    # double_data[0][0] : MAP
+    # items = double_data[0][1].split("=")[1]
+    # items = items.split(",")
+    # for i in range(0, len(items)):
+    #     self.items[i].set_count(items[i])
+    # del items
+    # A AJOUTER QUAND LES ITEMS SERONT CREES
+    self.p.change_positions(float(double_data[1][0].split("=")[1].split(",")[0]), float(double_data[1][0].split("=")[1].split(",")[1]))
+    self.p.change_money(float(double_data[1][1].split("=")[1]))
+    p_info = double_data[1][2].split("=")[1]
+    p_info = p_info.split(",")
+    for i in p_info:
+        self.p.set_player_info(i.split(":")[0], int(i.split(":")[1]))
+    del p_info
+    e_info = double_data[1][3].split("=")[1]
+    e_info = e_info.split(",")
+    for i in e_info:
+        self.p.change_equipment(i.split(":")[0], i.split(":")[1])
+    del e_info
+    k_info = double_data[2][0].split("=")[1]
+    k_info = k_info.split(",")
+    for i in k_info:
+        self.option.change_key(i.split(":")[0], int(i.split(":")[1]))
+    del k_info
+    # MONSTERS
