@@ -18,7 +18,9 @@ def event_main_menu(event, self):
             save.load(self, "file1")
             self.fen, self.page = 1, 0
             # self.fen, self.page = 0, 1
-        if self.mouse[0] >= 610 and self.mouse[0] <= 690 and self.mouse[1] >= 515 and self.mouse[1] <= 545:
+        if self.mouse[0] >= 610 and self.mouse[0] <= 760 and self.mouse[1] >= 515 and self.mouse[1] <= 545:
+            print("Options")
+        if self.mouse[0] >= 610 and self.mouse[0] <= 690 and self.mouse[1] >= 615 and self.mouse[1] <= 645:
             exit(0)
     if event.type == KEYDOWN:
         if event.key == K_ESCAPE:
@@ -43,6 +45,8 @@ def event_game(event, self):
             self.move_keys[2] = True
         if event.key == self.option.get_key("Right"):
             self.move_keys[3] = True
+        if event.key == self.option.get_key("Dash"):
+            self.move_keys[4] = True
         if event.key == self.option.get_key("Menu"):
             if not self.keys.get("Escape"):
                 img = self.images.get("menu_in_game")
@@ -65,6 +69,8 @@ def event_game(event, self):
             self.move_keys[2] = False
         if event.key == self.option.get_key("Right"):
             self.move_keys[3] = False
+        if event.key == self.option.get_key("Dash"):
+            self.move_keys[4] = False
         if event.key == self.option.get_key("Menu"):
             self.keys["Escape"] = False
         if event.key == self.option.get_key("Inventory"):
@@ -95,7 +101,7 @@ def event_menu(event, self):
         if event.key == self.option.get_key("Menu"):
             if not self.keys.get("Escape"):
                 self.page = 0
-                self.move_keys = [False, False, False, False]
+                self.move_keys = [False, False, False, False, False]
                 self.keys["Escape"] = True
 
 def event_inventory(event, self):

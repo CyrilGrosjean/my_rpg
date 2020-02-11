@@ -1,11 +1,9 @@
 # SYSTEM
-fen=1
-page=1
 map=map1
-item_count=[]
+item_count=
 # PLAYER
-pos=238.0,708.0
-money=100
+pos=117.75,677.25
+money=100.0
 player_info=MaxHealth:100,Health:100,Attack:10,Defense:10,Speed:10
 equipment=Weapon:Sword,Body:Chestplate,Head:Helmet,Legs:Leggings,Feet:Boots,Arm left:Ring,Arm right:Ring
 # OPTIONS

@@ -16,6 +16,7 @@ from math import floor
 def display_main_menu(self):
     new_text = self.font.render("New", 1, (255, 255, 255))
     load_text = self.font.render("Load", 1, (255, 255, 255))
+    option_text = self.font.render("Options", 1, (255, 255, 255))
     quit_text = self.font.render("Quit", 1, (255, 255, 255))
     img = self.images.get("main_menu")
 
@@ -23,13 +24,16 @@ def display_main_menu(self):
         new_text = self.font.render("New", 1, (255, 0, 0))
     if self.mouse[0] >= 610 and self.mouse[0] <= 705 and self.mouse[1] >= 410 and self.mouse[1] <= 445:
         load_text = self.font.render("Load", 1, (255, 0, 0))
-    if self.mouse[0] >= 610 and self.mouse[0] <= 690 and self.mouse[1] >= 515 and self.mouse[1] <= 545:
+    if self.mouse[0] >= 610 and self.mouse[0] <= 760 and self.mouse[1] >= 515 and self.mouse[1] <= 545:
+        option_text = self.font.render("Options", 1, (255, 0, 0))
+    if self.mouse[0] >= 610 and self.mouse[0] <= 690 and self.mouse[1] >= 615 and self.mouse[1] <= 645:
         quit_text = self.font.render("Quit", 1, (255, 0, 0))
     self.window.blit(img.get("background"), (0, 0))
     self.window.blit(img.get("logo"), (450, 0))
     self.window.blit(new_text, (610, 300))
     self.window.blit(load_text, (610, 400))
-    self.window.blit(quit_text, (610, 500))
+    self.window.blit(option_text, (610, 500))
+    self.window.blit(quit_text, (610, 600))
 
 def display_options(self):
     img = self.images.get("main_option")

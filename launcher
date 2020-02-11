@@ -36,7 +36,7 @@ class Launcher(object):
     p = player.Player()
     option = options.Options()
     map_collisions = map.get_map("map1")
-    move_keys = [False, False, False, False]
+    move_keys = [False, False, False, False, False]
     keys = {"Escape": False, "Inventory": False}
     refresh_time = 0
     items = []

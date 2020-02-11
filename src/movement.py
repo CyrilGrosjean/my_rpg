@@ -13,15 +13,23 @@ def check_movement(self):
     sprite = self.p.get_animation("Down")
 
     if self.move_keys[0]:
+        if self.move_keys[4]:
+            pos[1] -= 1
         pos[1] -= 1
         sprite = self.p.get_animation("Up")
     if self.move_keys[1]:
+        if self.move_keys[4]:
+            pos[1] += 1
         pos[1] += 1
         sprite = self.p.get_animation("Down")
     if self.move_keys[2]:
+        if self.move_keys[4]:
+            pos[0] -= 1
         pos[0] -= 1
         sprite = self.p.get_animation("Left")
     if self.move_keys[3]:
+        if self.move_keys[4]:
+            pos[0] += 1
         pos[0] += 1
         sprite = self.p.get_animation("Right")
 
@@ -31,12 +39,20 @@ def check_movement(self):
             nb += 1
     if nb > 1:
         if self.move_keys[0]:
+            if self.move_keys[4]:
+                pos[1] += 0.5
             pos[1] += 0.25
         if self.move_keys[1]:
+            if self.move_keys[4]:
+                pos[1] -= 0.5
             pos[1] -= 0.25
         if self.move_keys[2]:
+            if self.move_keys[4]:
+                pos[0] += 0.5
             pos[0] += 0.25
         if self.move_keys[3]:
+            if self.move_keys[4]:
+                pos[0] -= 0.5
             pos[0] -= 0.25
 
     if True in self.move_keys:
