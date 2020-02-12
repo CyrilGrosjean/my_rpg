@@ -67,6 +67,8 @@ class Launcher(object):
             self.mouse = pygame.mouse.get_pos()
             if self.fen == 0 and self.page == 0:
                 Ev.event_main_menu(event, self)
+            if self.fen == 0 and self.page == 2:
+                Ev.event_options(event, self)
             if self.fen == 1 and self.page == 0:
                 Ev.event_game(event, self)
             if self.fen == 1 and self.page == 1:
@@ -79,6 +81,8 @@ class Launcher(object):
             if self.page == 0:
                 Disp.display_main_menu(self)
             elif self.page == 1:
+                pass
+            elif self.page == 2:
                 Disp.display_options(self)
         if self.fen == 1:
             if self.page == 0:

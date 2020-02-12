@@ -8,6 +8,7 @@
 import pygame
 from pygame.locals import *
 import save
+import detect_key
 
 def event_main_menu(event, self):
     if event.type == MOUSEBUTTONDOWN:
@@ -19,7 +20,8 @@ def event_main_menu(event, self):
             self.fen, self.page = 1, 0
             # self.fen, self.page = 0, 1
         if self.mouse[0] >= 610 and self.mouse[0] <= 760 and self.mouse[1] >= 515 and self.mouse[1] <= 545:
-            print("Options")
+            self.change_key = [False, False, False, False, False, False, False, False]
+            self.fen, self.page = 0, 2
         if self.mouse[0] >= 610 and self.mouse[0] <= 690 and self.mouse[1] >= 615 and self.mouse[1] <= 645:
             exit(0)
     if event.type == KEYDOWN:
@@ -29,11 +31,61 @@ def event_main_menu(event, self):
         exit(0)
 
 def event_options(event, self):
+    try:
+        if self.change_key[2]:
+            pass
+    except:
+        self.change_key = [False, False, False, False, False, False, False, False]
     if event.type == QUIT:
         exit(0)
+    if event.type == MOUSEBUTTONDOWN:
+        if True not in self.change_key:
+            if self.mouse[0] >= 400 and self.mouse[0] <= 450 and self.mouse[1] >= 260 and self.mouse[1] <= 300:
+                self.change_key[0] = True
+            if self.mouse[0] >= 400 and self.mouse[0] <= 515 and self.mouse[1] >= 310 and self.mouse[1] <= 345:
+                self.change_key[1] = True
+            if self.mouse[0] >= 400 and self.mouse[0] <= 490 and self.mouse[1] >= 360 and self.mouse[1] <= 400:
+                self.change_key[2] = True
+            if self.mouse[0] >= 400 and self.mouse[0] <= 505 and self.mouse[1] >= 410 and self.mouse[1] <= 445:
+                self.change_key[3] = True
+            if self.mouse[0] >= 400 and self.mouse[0] <= 600 and self.mouse[1] >= 460 and self.mouse[1] <= 505:
+                self.change_key[4] = True
+            if self.mouse[0] >= 400 and self.mouse[0] <= 515 and self.mouse[1] >= 510 and self.mouse[1] <= 545:
+                self.change_key[5] = True
+            if self.mouse[0] >= 400 and self.mouse[0] <= 530 and self.mouse[1] >= 565 and self.mouse[1] <= 595:
+                self.change_key[6] = True
+            if self.mouse[0] >= 400 and self.mouse[0] <= 500 and self.mouse[1] >= 610 and self.mouse[1] <= 645:
+                self.change_key[7] = True
+            if self.mouse[0] >= 610 and self.mouse[0] <= 710 and self.mouse[1] >= 710 and self.mouse[1] <= 745:
+                del self.change_key
+                self.fen, self.page = 0, 0
     if event.type == KEYDOWN:
-        if event.key == K_ESCAPE:
-            exit(0)
+        if True in self.change_key:
+            if self.change_key[0]:
+                self.option.change_key("Up", event.key)
+                self.change_key[0] = False
+            if self.change_key[1]:
+                self.option.change_key("Down", event.key)
+                self.change_key[1] = False
+            if self.change_key[2]:
+                self.option.change_key("Left", event.key)
+                self.change_key[2] = False
+            if self.change_key[3]:
+                self.option.change_key("Right", event.key)
+                self.change_key[3] = False
+            if self.change_key[4]:
+                self.option.change_key("Inventory", event.key)
+                self.change_key[4] = False
+            if self.change_key[5]:
+                self.option.change_key("Menu", event.key)
+                self.change_key[5] = False
+            if self.change_key[6]:
+                self.option.change_key("Action", event.key)
+                self.change_key[6] = False
+            if self.change_key[7]:
+                self.option.change_key("Dash", event.key)
+                self.change_key[7] = False
+
 
 def event_game(event, self):
     if event.type == KEYDOWN:
