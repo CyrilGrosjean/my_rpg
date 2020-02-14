@@ -75,6 +75,8 @@ class Launcher(object):
                 Ev.event_menu(event, self)
             if self.fen == 1 and self.page == 2:
                 Ev.event_inventory(event, self)
+            if self.fen == 1 and self.page == 3:
+                Ev.event_option_game(event, self)
 
     def display(self):
         if self.fen == 0:
@@ -91,5 +93,7 @@ class Launcher(object):
                 Disp.display_menu(self)
             if self.page == 2:
                 Disp.display_inventory(self)
+            if self.page == 3:
+                Disp.display_option_game(self)
 
 Launcher().refresh()

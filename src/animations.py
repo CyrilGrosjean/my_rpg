@@ -13,6 +13,8 @@ def animation_menu(self, img):
         img["inventory"].set_alpha(img["inventory"].get_alpha() + 30)
     elif img["save"].get_alpha() < 255:
         img["save"].set_alpha(img["save"].get_alpha() + 30)
+    elif img["option"].get_alpha() < 255:
+        img["option"].set_alpha(img["option"].get_alpha() + 30)
     elif img["quit"].get_alpha() < 255:
         img["quit"].set_alpha(img["quit"].get_alpha() + 30)
     elif img["quests"].get_alpha() < 255:
@@ -35,6 +37,9 @@ def display_text_menu(self):
     if mouse[0] >= 690 and mouse[0] <= 720 and mouse[1] >= 435 and mouse[1] <= 460:
         text = self.small_font.render("Quests", 1, (255, 255, 255))
         self.window.blit(text, (685, 470))
-    if mouse[0] >= 630 and mouse[0] <= 660 and mouse[1] >= 480 and mouse[1] <= 510:
+    if mouse[0] >= 590 and mouse[0] <= 620 and mouse[1] >= 500 and mouse[1] <= 530:
+        text = self.small_font.render("Options", 1, (255, 255, 255))
+        self.window.blit(text, (583, 540))
+    if mouse[0] >= 670 and mouse[0] <= 700 and mouse[1] >= 500 and mouse[1] <= 530: # 40, 70
         text = self.small_font.render("Quit", 1, (255, 255, 255))
-        self.window.blit(text, (635, 520))
+        self.window.blit(text, (672, 540))

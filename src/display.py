@@ -108,7 +108,8 @@ def display_menu(self):
     self.window.blit(img.get("equip"), (670, 360))
     self.window.blit(img.get("quests"), (690, 430))
     self.window.blit(img.get("save"), (560, 430))
-    self.window.blit(img.get("quit"), (630, 480))
+    self.window.blit(img.get("option"), (590, 500))
+    self.window.blit(img.get("quit"), (670, 500)) # 40, 70
     animations.display_text_menu(self)
 
 def display_inventory(self):
@@ -137,3 +138,64 @@ def display_map(self):
     self.window.blit(img.get("empty_bar"), (1110, 760), (0, 0, 100, 25))
     self.window.blit(img.get("heal_bar"), (1110, 760), (0, 0, floor(p_health / max_health * 100), 25))
     self.window.blit(sprite[self.index_animation], (620, 400))
+
+def display_option_game(self):
+    pos = self.p.get_positions()
+    img = self.images.get("in_game")
+    sprite = self.p.get_animation("Down")
+    up = self.font.render("Up", 1, (255, 255, 255))
+    down = self.font.render("Down", 1, (255, 255, 255))
+    left = self.font.render("Left", 1, (255, 255, 255))
+    right = self.font.render("Right", 1, (255, 255, 255))
+    inventory = self.font.render("Inventory", 1, (255, 255, 255))
+    menu = self.font.render("Menu", 1, (255, 255, 255))
+    action = self.font.render("Action", 1, (255, 255, 255))
+    dash = self.font.render("Dash", 1, (255, 255, 255))
+    back = self.font.render("Back", 1, (255, 255, 255))
+    up_key = self.font.render(detect_key.check_this_key(self.option.get_key("Up")), 1, (255, 255, 255))
+    down_key = self.font.render(detect_key.check_this_key(self.option.get_key("Down")), 1, (255, 255, 255))
+    left_key = self.font.render(detect_key.check_this_key(self.option.get_key("Left")), 1, (255, 255, 255))
+    right_key = self.font.render(detect_key.check_this_key(self.option.get_key("Right")), 1, (255, 255, 255))
+    inventory_key = self.font.render(detect_key.check_this_key(self.option.get_key("Inventory")), 1, (255, 255, 255))
+    menu_key = self.font.render(detect_key.check_this_key(self.option.get_key("Menu")), 1, (255, 255, 255))
+    action_key = self.font.render(detect_key.check_this_key(self.option.get_key("Action")), 1, (255, 255, 255))
+    dash_key = self.font.render(detect_key.check_this_key(self.option.get_key("Dash")), 1, (255, 255, 255))
+
+    if self.mouse[0] >= 610 and self.mouse[0] <= 710 and self.mouse[1] >= 710 and self.mouse[1] <= 745:
+        back = self.font.render("Back", 1, (255, 0, 0))
+    if self.mouse[0] >= 400 and self.mouse[0] <= 450 and self.mouse[1] >= 260 and self.mouse[1] <= 300 or self.change_key[0]:
+        up = self.font.render("Up", 1, (255, 0, 0))
+    if self.mouse[0] >= 400 and self.mouse[0] <= 515 and self.mouse[1] >= 310 and self.mouse[1] <= 345 or self.change_key[1]:
+        down = self.font.render("Down", 1, (255, 0, 0))
+    if self.mouse[0] >= 400 and self.mouse[0] <= 490 and self.mouse[1] >= 360 and self.mouse[1] <= 400 or self.change_key[2]:
+        left = self.font.render("Left", 1, (255, 0, 0))
+    if self.mouse[0] >= 400 and self.mouse[0] <= 505 and self.mouse[1] >= 410 and self.mouse[1] <= 445 or self.change_key[3]:
+        right = self.font.render("Right", 1, (255, 0, 0))
+    if self.mouse[0] >= 400 and self.mouse[0] <= 600 and self.mouse[1] >= 460 and self.mouse[1] <= 505 or self.change_key[4]:
+        inventory = self.font.render("Inventory", 1, (255, 0, 0))
+    if self.mouse[0] >= 400 and self.mouse[0] <= 515 and self.mouse[1] >= 510 and self.mouse[1] <= 545 or self.change_key[5]:
+        menu = self.font.render("Menu", 1, (255, 0, 0))
+    if self.mouse[0] >= 400 and self.mouse[0] <= 530 and self.mouse[1] >= 565 and self.mouse[1] <= 595 or self.change_key[6]:
+        action = self.font.render("Action", 1, (255, 0, 0))
+    if self.mouse[0] >= 400 and self.mouse[0] <= 500 and self.mouse[1] >= 610 and self.mouse[1] <= 645 or self.change_key[7]:
+        dash = self.font.render("Dash", 1, (255, 0, 0))
+
+    self.window.blit(img.get("map"), (0 - pos[0], 0 - pos[1]))
+    self.window.blit(sprite[1], (620, 400))
+    self.window.blit(up, (400, 250))
+    self.window.blit(up_key, (700, 250))
+    self.window.blit(down, (400, 300))
+    self.window.blit(down_key, (700, 300))
+    self.window.blit(left, (400, 350))
+    self.window.blit(left_key, (700, 350))
+    self.window.blit(right, (400, 400))
+    self.window.blit(right_key, (700, 400))
+    self.window.blit(inventory, (400, 450))
+    self.window.blit(inventory_key, (700, 450))
+    self.window.blit(menu, (400, 500))
+    self.window.blit(menu_key, (700, 500))
+    self.window.blit(action, (400, 550))
+    self.window.blit(action_key, (700, 550))
+    self.window.blit(dash, (400, 600))
+    self.window.blit(dash_key, (700, 600))
+    self.window.blit(back, (610, 700))

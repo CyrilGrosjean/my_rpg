@@ -143,7 +143,9 @@ def event_menu(event, self):
             save.save(self, "file1")
         if mouse[0] >= 690 and mouse[0] <= 720 and mouse[1] >= 435 and mouse[1] <= 460:
             print("Quests")
-        if mouse[0] >= 630 and mouse[0] <= 660 and mouse[1] >= 480 and mouse[1] <= 510:
+        if mouse[0] >= 590 and mouse[0] <= 620 and mouse[1] >= 500 and mouse[1] <= 530:
+            self.page = 3
+        if mouse[0] >= 675 and mouse[0] <= 700 and mouse[1] >= 500 and mouse[1] <= 530:
             self.fen = 0
             self.page = 0
     if event.type == KEYUP:
@@ -172,3 +174,59 @@ def event_inventory(event, self):
             self.keys["Escape"] = True
             self.page = 0
             self.move_keys = [False, False, False, False]
+
+def event_option_game(event, self):
+    try:
+        if self.change_key[2]:
+            pass
+    except:
+        self.change_key = [False, False, False, False, False, False, False, False]
+    if event.type == QUIT:
+        exit(0)
+    if event.type == MOUSEBUTTONDOWN:
+        if True not in self.change_key:
+            if self.mouse[0] >= 400 and self.mouse[0] <= 450 and self.mouse[1] >= 260 and self.mouse[1] <= 300:
+                self.change_key[0] = True
+            if self.mouse[0] >= 400 and self.mouse[0] <= 515 and self.mouse[1] >= 310 and self.mouse[1] <= 345:
+                self.change_key[1] = True
+            if self.mouse[0] >= 400 and self.mouse[0] <= 490 and self.mouse[1] >= 360 and self.mouse[1] <= 400:
+                self.change_key[2] = True
+            if self.mouse[0] >= 400 and self.mouse[0] <= 505 and self.mouse[1] >= 410 and self.mouse[1] <= 445:
+                self.change_key[3] = True
+            if self.mouse[0] >= 400 and self.mouse[0] <= 600 and self.mouse[1] >= 460 and self.mouse[1] <= 505:
+                self.change_key[4] = True
+            if self.mouse[0] >= 400 and self.mouse[0] <= 515 and self.mouse[1] >= 510 and self.mouse[1] <= 545:
+                self.change_key[5] = True
+            if self.mouse[0] >= 400 and self.mouse[0] <= 530 and self.mouse[1] >= 565 and self.mouse[1] <= 595:
+                self.change_key[6] = True
+            if self.mouse[0] >= 400 and self.mouse[0] <= 500 and self.mouse[1] >= 610 and self.mouse[1] <= 645:
+                self.change_key[7] = True
+            if self.mouse[0] >= 610 and self.mouse[0] <= 710 and self.mouse[1] >= 710 and self.mouse[1] <= 745:
+                del self.change_key
+                self.fen, self.page = 1, 1
+    if event.type == KEYDOWN:
+        if True in self.change_key:
+            if self.change_key[0]:
+                self.option.change_key("Up", event.key)
+                self.change_key[0] = False
+            if self.change_key[1]:
+                self.option.change_key("Down", event.key)
+                self.change_key[1] = False
+            if self.change_key[2]:
+                self.option.change_key("Left", event.key)
+                self.change_key[2] = False
+            if self.change_key[3]:
+                self.option.change_key("Right", event.key)
+                self.change_key[3] = False
+            if self.change_key[4]:
+                self.option.change_key("Inventory", event.key)
+                self.change_key[4] = False
+            if self.change_key[5]:
+                self.option.change_key("Menu", event.key)
+                self.change_key[5] = False
+            if self.change_key[6]:
+                self.option.change_key("Action", event.key)
+                self.change_key[6] = False
+            if self.change_key[7]:
+                self.option.change_key("Dash", event.key)
+                self.change_key[7] = False
