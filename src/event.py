@@ -168,12 +168,12 @@ def event_inventory(event, self):
         if event.key == self.option.get_key("Inventory"):
             if not self.keys.get("Inventory"):
                 self.page = 0
-                self.move_keys = [False, False, False, False]
+                self.move_keys = [False, False, False, False, False]
                 self.keys["Inventory"] = True
         if event.key == self.option.get_key("Menu"):
             self.keys["Escape"] = True
             self.page = 0
-            self.move_keys = [False, False, False, False]
+            self.move_keys = [False, False, False, False, False]
 
 def event_option_game(event, self):
     try:

@@ -2,12 +2,12 @@
 map=map1
 item_count=
 # PLAYER
-pos=740.25,714.75
-money=100.0
+pos=0.25,862.25
+money=100
 player_info=MaxHealth:100,Health:100,Attack:10,Defense:10,Speed:10
 equipment=Weapon:Sword,Body:Chestplate,Head:Helmet,Legs:Leggings,Feet:Boots,Arm left:Ring,Arm right:Ring
 # OPTIONS
-keys=Up:122,Down:115,Left:113,Right:100,Inventory:105,Menu:27,Action:13,Dash:304
+keys=Up:273,Down:274,Left:276,Right:275,Inventory:105,Menu:27,Action:13,Dash:304
 # MONSTERS
 nb=1
 ---
